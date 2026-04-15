@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Priyanka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'GeistPixelSquare';
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-pixel/GeistPixelSquare-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    :root {
+      --cream: #FAF7F0;
+      --dark: #1C1611;
+      --gold: #D4A843;
+      --card-bg: rgba(245, 240, 228, 0.45);
+      --glass: rgba(245, 240, 228, 0.45);
+      --glass-dark: rgba(28, 22, 17, 0.55);
+      --glass-reel: rgba(28, 22, 17, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: #1a2e1a;
+      background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOKBh-Py_qDHYbyBeFuA9Ydp6hNvSSkWhkDzb2ph1qJ0qM4YN8SBjjdWl493lsr3rEKEa3R1B-6_O-mkmsukLvLxyv6l2pDoBcuLcnRNyKojiG7dk5pIgHg7l5kIpFkQKK8KgmFjI9cHjPv-5AvTrYb=w2040-h1602-s-no-gm?authuser=0');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(18, 14, 8, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 200;
+    }
+
+    .nav-left a {
+      font-size: 15px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-right a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .nav-right a:hover { opacity: 1; }
+
+    .nav-right a.active {
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 4px;
+      opacity: 1;
+    }
+
+    .cta-pill {
+      background: var(--gold) !important;
+      color: var(--dark) !important;
+      padding: 10px 24px;
+      border-radius: 100px;
+      opacity: 1 !important;
+    }
+
+    /* FILTER TABS */
+    .filter-tabs {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      height: 32px;
+      background: rgba(28, 22, 17, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      gap: 32px;
+      z-index: 190;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tab {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(250, 247, 240, 0.5);
+      cursor: pointer;
+      transition: color 0.2s;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab:hover { color: var(--cream); }
+
+    .tab.active {
+      color: var(--cream);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    /* LAYOUT */
+    .layout {
+      position: fixed;
+      top: 96px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 96px);
+      display: grid;
+      grid-template-columns: 15% 35% 50%;
+    }
+
+    /* LEFT COLUMN */
+    .left-col {
+      background: var(--glass-dark);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-right: 1px solid rgba(212, 168, 67, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .cluster-label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(250, 247, 240, 0.5);
+      margin-bottom: 24px;
+      transition: opacity 0.3s ease;
+    }
+
+    .counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--gold);
+      transition: opacity 0.3s ease;
+    }
+
+    /* CENTRE COLUMN */
+    .centre-col {
+      background: var(--glass-reel);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-right: 1px solid rgba(250, 247, 240, 0.06);
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none;
+    }
+
+    .centre-col::-webkit-scrollbar { display: none; }
+
+    .project-frame {
+      height: calc(100vh - 96px);
+      width: 100%;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .project-frame:hover { transform: scale(1.015); }
+
+    .project-frame.active {
+      box-shadow: inset 0 0 0 2px var(--gold);
+    }
+
+    .frame-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .frame-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,22,17,0.7) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .frame-info {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(250, 247, 240, 0.6);
+    }
+
+    /* RIGHT COLUMN */
+    .right-col {
+      background: var(--glass);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 8px 32px rgba(28, 22, 17, 0.12);
+      overflow-y: auto;
+      padding: 48px 52px;
+      position: relative;
+    }
+
+    .content-wrapper {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .content-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .label-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      display: block;
+    }
+
+    h1 {
+      font-family: 'GeistPixelSquare', sans-serif;
+      font-size: 36px;
+      color: var(--dark);
+      margin-top: 12px;
+      line-height: 1.1;
+    }
+
+    .gold-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0;
+    }
+
+    .hook {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--dark);
+      font-style: italic;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(28, 22, 17, 0.1);
+      margin: 24px 0;
+    }
+
+    .body-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(28, 22, 17, 0.7);
+      max-width: 520px;
+    }
+
+    .body-text p { margin-bottom: 20px; }
+
+    .cta-area {
+      position: sticky;
+      bottom: 0;
+      background: transparent;
+      backdrop-filter: none;
+      padding: 20px 0 0;
+      border-top: 1px solid rgba(28, 22, 17, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .primary-cta {
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .primary-cta:hover { transform: translateY(-1px); }
+
+    .secondary-cta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(28, 22, 17, 0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .secondary-cta:hover { color: var(--dark); }
+
+    /* CLUSTER COLORS */
+    .bg-experience { background-color: #1A3020; }
+    .bg-research { background-color: #142824; }
+    .bg-brand { background-color: #1E2A18; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">Priyanka</a>
+    </div>
+    <div class="nav-right">
+      <a href="work.html" class="active">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact" class="cta-pill">Let's Talk</a>
+    </div>
+  </nav>
+
+  <div class="filter-tabs">
+    <div class="tab active" data-filter="all">All</div>
+    <div class="tab" data-filter="experience">Experience Design</div>
+    <div class="tab" data-filter="research">Research & Foresight</div>
+    <div class="tab" data-filter="brand">Brand & Visual Culture</div>
+  </div>
+
+  <div class="layout">
+    <div class="left-col">
+      <div class="cluster-label" id="left-cluster">Experience Design</div>
+      <div class="counter" id="left-counter">01 / 15</div>
+    </div>
+
+    <div class="centre-col" id="reel">
+      <!-- Projects injected here -->
+    </div>
+
+    <div class="right-col" id="content-panel">
+      <div class="content-wrapper" id="content-inner">
+        <!-- Content injected here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const PROJECTS = [
+      { id:1, slug:"minduful", cluster:"experience",
+        type:"Experience Design · Academic", year:"2025",
+        name:"Mindful slow travel",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczPxHSyaYovIWu9Zmlg0D2efy3B1shAKCR8Cm2foeFqpGVujQGQHMmzdlMJGhOScZi2zFuGBrU9nUEKye-2GnWlPXWpyJguIaR0p6FTJEjyRi7rgHNBdgkUK5NmtYZqEmMno21pnqt-TMk6JKDyJBSUC=w625-h833-s-no-gm?authuser=0",
+        hook:"A pacing-aware travel platform that nudges groups from over-scheduling to intentional journeys.",
+        paragraphs:[
+          "Every travel planning tool optimises for doing more, not doing better. This project investigates that tension — through phenomenological research and hermeneutic circle interviews — and translates it into a 10-feature behavioural intervention that helps group travellers plan slower, more restorative trips without losing autonomy.",
+          "The pacing alert was framed as guidance, not restriction. Rest days were labelled intentional, not empty. The 'Why?' explanations were present but de-emphasised — visible enough to build trust, quiet enough not to interrupt. Every decision reframed spaciousness as a feature.",
+          "Post-testing, perceived stress shifted from 8–9/10 ('exhausted') to 7–8/10 ('calm, doable'). A model that doesn't exist in any current platform."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:2, slug:"itc-sunbean", cluster:"experience",
+        type:"Experience Design · Internship ⭐", year:"2025",
+        name:"ITC Sunbean",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczP0jz1ocaoc_8Rt7lIvzteL9f9KxCGAOm-VUs4IXPvBnyNlafWOBRxXOnbZygmPyK3nn9KFE01bg-t2f3799HH_nJEKQ4_r3ZjZxlawokNS4GMZ5T-gq6_e51BafJyQI-364qwiVGhlqBlbm7xxXYNp=w1034-h1380-s-no-gm?authuser=0",
+        hook:"A premium coffee brand's digital home — built on generative AI storytelling and responsive interaction design.",
+        paragraphs:[
+          "Sunbean's 'bean-to-cup' story — its strongest brand asset — was invisible on its own website. The existing design lacked visual hierarchy, had no storytelling system, and offered no differentiation from generic coffee retail. The brief: make the website feel as premium as the product itself.",
+          "Generative AI-driven hero and bento videos replaced static imagery. A/B testing across 10 users showed Version 2 had 8x higher engagement — chosen over Version 1's 15% speed advantage. The bento layout surfaced brand narrative alongside product discovery without adding navigation layers.",
+          "A live responsive website, complete design system, and AI-driven hero video. A/B validated. Scalable across future Sunbean product lines."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:3, slug:"flexprice", cluster:"experience",
+        type:"Experience Design · Internship ⭐", year:"2025",
+        name:"FlexPrice",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczPjNDI25C0EAUXg0_IS3vpBL7JRsEylR1TUV_HgXBJXkorauOCpsK8Tsgp-vbdUxXlqqQnqkuAQvx_jK-rTO1tjk-v2fz3uG8d2pHQ6etL8cB9sf6L2L9KeaJ8ZKsTG8uKgottLbHcNUcsfrbzXJs9U=w1202-h1602-s-no-gm?authuser=0",
+        hook:"A developer-first pricing dashboard that simplifies complex SaaS monetisation without sacrificing depth.",
+        paragraphs:[
+          "Pricing optimisation in SaaS requires real-time visibility, modular plan management, and seamless integrations — but existing dashboards buried all of this in complexity. FlexPrice needed an interface where both technical and non-technical users could configure pricing without a support ticket.",
+          "A modular card-based layout replaced linear menu structures — so configurations, analytics, and integrations could be accessed non-sequentially by role. The visual language stayed minimal and data-dense, distinguishing FlexPrice from competitors like Stigg and Pricery that over-simplified at the cost of control.",
+          "Complete hi-fi dashboard across desktop and mobile. Design system built for handoff. Every screen structured for a scalable, API-first architecture."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:4, slug:"myntra-accessibility", cluster:"experience",
+        type:"Experience Design · Academic", year:"2024",
+        name:"Myntra Color Accessibility",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczOO_wa0YFi-fZ90KEGNFkOD2Hu8IWyyIxUx8eymNw6mziJzpOqcSon56WBCTn7o3GJQOKje5hCH-RD-eQE0gb-pw1MoMlWZTy362o1cS0ff_40OVDF6FRhsOcHiWkZbb3sim1LcyZcKfxM7MVUgqb_w=w694-h900-s-no-gm?authuser=0",
+        hook:"A Color Accessibility Toolkit for Myntra — designed for the 8% of male shoppers who are color-blind.",
+        paragraphs:[
+          "Colour is how fashion e-commerce communicates everything — product discovery, filtering, categorisation. For color-blind users, this creates persistent ambiguity, external dependence, and a pervasive sense of exclusion. This two-part project moved from deep qualitative research into a fully designed toolkit proposal for Myntra.",
+          "The Color Guide was positioned as a size chart equivalent — familiar, non-stigmatising, integrated rather than siloed. Contrast and saturation controls were embedded into the existing filter panel. A Color Simulator let users preview swatches through CVD lenses in-context, on the product page itself.",
+          "Six usability barriers addressed. Myntra positioned as a first-mover in accessible fashion e-commerce."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:5, slug:"akaar", cluster:"experience",
+        type:"Experience Design · Academic", year:"2024",
+        name:"Akaar",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczOQHYZCSe992ipjGg6d-HPfSayypqYvMm0bMEemSP2hSS0z4QEWdCatbM4HwkcnI3muxOagxSIUtJvoPDT-_orqw3h95qRF6CV0si6OFRAcLBblddiQX4n0K2Hs0wEFJ33duPh14w7ArrDlo5iU2TRb=w804-h1102-s-no-gm?authuser=0",
+        hook:"A digital museum platform that gives Indian handicrafts the cultural, commercial, and community infrastructure they deserve.",
+        paragraphs:[
+          "Indian handicrafts exist in fragments — scattered across poorly maintained portals, exploitative marketplaces, and outdated government databases. No single platform serves artisans, researchers, and design students simultaneously. Akaar is the proposal for that platform.",
+          "Geography became the primary navigation metaphor — an interactive map of India's craft clusters replacing category menus. Ethical Sourcing Badges addressed authenticity without a separate verification flow. Role-based onboarding balanced three radically different user types without locking any of them into rigid pathways.",
+          "Fully prototyped — homepage, map interface, craft detail pages, artisan profiles, shop section, exhibition pages. Validated across all three user types through usability and accessibility testing."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:6, slug:"visionxt-website", cluster:"experience",
+        type:"Brand & Visual Culture · Experience Design · Internship ⭐", year:"2025",
+        name:"VisioNxt",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczMckGw4X_vPjgT85EBzw70kkBv1YQwI5-mJ05hHGle5Q64Qum6sXg0IGQC0l9L_wAbxDyLxLANE_STXLLoJLyI_iOixnelwkl8gD6EwLW38c7GtemVJDOfJKEGCV7hPlYWxT8hk6fsAoTaeEND7sJPR=w1202-h1602-s-no-gm?authuser=0",
+        hook:"Building a brand from nothing — then building the place it lives.",
+        paragraphs:[
+          "VisioNxt is a trend research and forecasting initiative under India's Ministry of Textiles. It had no visual identity, no digital presence, and no design system. It needed everything, in the right order.",
+          "The Brand Bible came first. Visual language, typographic hierarchy, colour governance, illustration style, tone of voice, component library — a full design system built to operate across government publications, industry reports, conference materials, and digital platforms without losing coherence.",
+          "The website came second — end-to-end information architecture, interaction model, and a conversion-optimised digital experience that translated complex, multi-stakeholder content into something a minister, a design student, and a textile industry professional could all navigate without friction. Brand first. Then the building. In that order, always."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:7, slug:"acic-healthcare", cluster:"experience",
+        type:"Experience Design · Academic", year:"2024",
+        name:"ACIC — Healthcare App",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczMZ_8EfuJCVJCfqvsLaMPukLtPGJubqAULDIhEIS--MbvdrapXsnRgo6cixXvVUNaBRLq6sfCU5UCUXXe5XNDxBwIUXTYqdckVz6x-JTe-z3RmUNUkAq-H1l2OzWOVd_uWdXnHQqoAXrgl4oVXN_HPR=w900-h1200-s-no-gm?authuser=0",
+        hook:"Designing for the people who hold the system together.",
+        paragraphs:[
+          "Healthcare workers are the highest-stress, highest-stakes users in any digital ecosystem — and often the most underserved by the products built for them. This project addressed that gap: a mobile application for frontline healthcare workers, prioritising speed, clarity, and cognitive ease in conditions where both are in short supply.",
+          "The design process mapped real-world workflows under pressure — information hierarchies built around decision urgency, not data volume. Every screen optimised for one-handed use, low-light environments, and interrupted attention. Accessibility and error-prevention were not features. They were the brief.",
+          "When the user cannot afford to pause, the interface cannot afford to fail."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:8, slug:"blue-tent", cluster:"research",
+        type:"Research & Foresight · Academic · NGO", year:"2025",
+        name:"Blue Tent Settlements",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczP_NBetdXTcYZIg3H7t4HVe4rcJzZrSdRgwVko0J0ZJqITjN-P1_LBBv6YZCf5IlwPIHpibjVtuKJXGOhPUr0hQgAzvLx5IKPfEsasYEUeeeL5xHNUunorLf08I_tg8bSvBmL4icMw7TpBTehNWVmtQ=w924-h1102-s-no-gm?authuser=0",
+        hook:"Co-designing systemic interventions for displaced urban communities.",
+        paragraphs:[
+          "Displacement is a design problem nobody wants to admit is a design problem. This project — developed in partnership with an NGO working with displaced urban communities — used systems thinking and co-design methods to identify intervention points where design could meaningfully improve daily life.",
+          "Fieldwork. Ethnographic mapping. Journey documentation. The research produced three viable intervention frameworks, one of which was taken forward by the NGO partner."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:9, slug:"genz-trends", cluster:"research",
+        type:"Research & Foresight · Academic", year:"2025",
+        name:"GenZ Macro Trends",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczPt_FJ3USNlisaG2KRZWz-tM4fgqsFn8YTtMIECVn_2gTsm9q2lIqqgFDpAS3iXzjG6X0tPm0cdx18w0z5YLWAAzrPfkqsxP6hpo00QFv-UK04LZt5Jah2bROxqH7i1xa54Ac2jKAutOrth14TWkZMS=w860-h1166-s-no-gm?authuser=0",
+        hook:"A strategic macro trend forecast mapping Gen Z cultural shifts through 2030.",
+        paragraphs:[
+          "Trend forecasting at its best is not prediction — it is pattern recognition applied with rigour. This project mapped macro cultural, behavioural, and aesthetic shifts in Gen Z across India and global markets, projecting forward to 2030.",
+          "The output was a structured forecast report — signal scanning, trend clustering, implication mapping — built on qualitative research, semiotic analysis, and secondary data synthesis."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:10, slug:"systems-gloves", cluster:"research",
+        type:"Research & Foresight · Academic", year:"2024",
+        name:"Systems Thinking — Disposable Gloves",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczM9bEM6_FuaOM-mpsSwCxGhYOLnyz_x8FhSMQ1oZCln290LpDAzLpgTC8cf-Fqbwoahj362SM9Esfm7EOXYsdQwhLCz5D1GWUnuBzqPW3fNcoNWzI6tWq-hqaerfYe6hf9UO533sFkUf2lmM7Is829W=w1027-h1370-s-no-gm?authuser=0",
+        hook:"A systemic lens on 300 billion gloves — and what happens after.",
+        paragraphs:[
+          "The COVID-19 pandemic turned disposable gloves into a global crisis in slow motion. 800,000 tons of non-biodegradable waste annually. In India: 44 crore imported gloves in three months alone. This research maps every node of that system to find where design can intervene.",
+          "Using systems maps, causal loop diagrams, LCA analysis, and sustainability gap frameworks, the project traced glove lifecycle from petroleum extraction to landfill — identifying six critical leverage points. Three design interventions emerged: a Green BIS Certification, a Port-of-Entry Safety Check Toolkit, and a Glove Source Transparency Platform.",
+          "Systems thinking revealed what linear analysis misses — the problem is not the glove. It is the system that makes the glove invisible."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:11, slug:"toda-embroidery", cluster:"research",
+        type:"Research & Foresight · Academic", year:"2024",
+        name:"Toda Embroidery",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczMDRO9-K5NEBpqmm4Jz31u0DdzJAs95UhnrrBT38TRzPSDwCTmvlUq_SvVAfin9PlqN_IxdD-vTHXUmjeRf_I0wI1-YRJtgIPWY7WaVAzkph3t37vMbNiintvgLivWwPKV_ODpS4GBCWzWsz2GqtUOr=w1042-h1390-s-no-gm?authuser=0",
+        hook:"A living craft practice sitting at the intersection of identity, ecology, and economic fragility.",
+        paragraphs:[
+          "The Toda people of the Nilgiri Hills have embroidered their cosmology into fabric for centuries — geometric, sacred, inseparable from ritual. This research mapped the full ecosystem of that practice: the artisans, the supply chains, the cultural institutions, and the market forces simultaneously preserving and eroding it.",
+          "Secondary research, field documentation, and sustainability analysis across ecological, economic, and social dimensions. The output was a research and publication design project that treated the documentation itself as a design act — because how a craft is archived shapes whether it survives.",
+          "Some things cannot be optimised. They can only be understood."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:12, slug:"burberry-semiotics", cluster:"brand",
+        type:"Brand & Visual Culture · Academic", year:"2024",
+        name:"Semiotic Analysis — Burberry",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczPOOUWI4v2PBWumHgyIR6POQ2DT4wu0VKDc7KddZ6Q6qwMnJ7ld5J0Y-DGyTUrZW7XdzKKGRYondG0yhVWleQQIgImldxbvqliv57AJlTVFh-q4-DOCwGyf7psGyTw1DEfm0c6hx_EPVsvAsA13BQIX=w832-h1109-s-no-gm?authuser=0",
+        hook:"A luxury campaign decoded — sign by sign, myth by myth.",
+        paragraphs:[
+          "The 'London in Love' campaign is not selling a trench coat. It is selling an entire mythology of Britishness — rain as romance, restraint as desire, heritage as modernity. This semiotic analysis dissects how Burberry constructs and circulates that mythology through visual language, celebrity casting, colour, and cultural codes.",
+          "Using Barthesian semiotic frameworks — denotation, connotation, myth — the analysis moves through each visual and narrative layer: what is shown, what is implied, and what cultural work the imagery is performing beneath the surface.",
+          "Luxury is never about the product. It is always about the story the viewer tells themselves while holding it."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:13, slug:"evolution-of-self", cluster:"brand",
+        type:"Brand & Visual Culture · Academic", year:"2024",
+        name:"Evolution of Self",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczO3Zr97GMVu1-BlbUgBD2EhSTClXwFxakPvTvTPI4Uj4V4eD5ej8qQoCW6xYOHqgvPVsGINrv6NqWhfCA344FL4ZK4yWhUnLX97_m8sCukK-aVMHP2BXr_uQ6cUgr_dUp9jFZjwsXVRH2hXri3IBFDN=w428-h574-s-no-gm?authuser=0",
+        hook:"A research paper reimagined as a visual experience.",
+        paragraphs:[
+          "Academic research has a presentation problem. Dense argumentation, critical insight, and genuinely original thinking routinely disappear inside formatting conventions designed for the printing press.",
+          "This project took a research paper on identity formation and the changing nature of selfhood — and rebuilt its visual language from scratch. Not illustration. Not decoration. A typographic and spatial system where the structure of the page embodies the argument it is presenting.",
+          "Form is not separate from content. When the design is working, they are the same thing."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:14, slug:"paws-of-hope", cluster:"brand",
+        type:"Brand & Visual Culture · Academic", year:"2024",
+        name:"Paws of Hope",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczP7IECu9ZSlQ-OErTIgi43uOQeUN7vhiDt7J0QqWCzDRU9lb1GePwbAGYcsOC3ipg4t0CcraBuNZhr2vW8m0ULsb4P3_RZY0OEz7Rxt1WmbmhZdXFyXtSUXCezIQ4dmA_DpkMzZTi5q_Bs2J1Wpc48A=w1202-h1602-s-no-gm?authuser=0",
+        hook:"A print design system for a cause that deserves to be taken seriously.",
+        paragraphs:[
+          "Animal welfare organisations operate on the thinnest of margins — awareness, trust, and donations are built or lost in a single piece of print. Paws of Hope needed a brochure that communicated warmth and urgency simultaneously. Not sentimental. Not clinical. Both.",
+          "The design system balanced editorial photography with a clean typographic hierarchy that let the stories lead. Every layout decision asked: does this make someone stop, read, and act?",
+          "Good cause design is not decoration. It is argument."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" },
+
+      { id:15, slug:"usability-poster", cluster:"brand",
+        type:"Research & Foresight · Brand & Visual Culture · Academic", year:"2024",
+        name:"Usability Barriers Poster",
+        image: "https://lh3.googleusercontent.com/pw/AP1GczMVn-QeWZPQ7Avnp4Fm6vp2RN9cLw4UOEqCMix1vk8MyC57qTs0woDK6EXfXgtQmnx3uZ-CTo7BN-GoRAUNx9csSnyankpG0UZmwKi2ZFBBkEsVHZxZzPhcUwwAhuqaBTelzaKGppHLAUYwJW-_7LWz=w619-h826-s-no-gm?authuser=0",
+        hook:"Six barriers. One poster. An argument made visible.",
+        paragraphs:[
+          "This research poster distils the foundational findings of the Myntra Color Accessibility study into a single visual artifact — designed to communicate the systemic exclusion of color-blind shoppers in fashion e-commerce to an audience that needs to act on it.",
+          "Persistent ambiguity. Absent labelling. Visual inconsistencies. External dependence. Emotional impact. Perceived exclusion. Six barriers, one argument.",
+          "A research paper that cannot be read is a research paper that cannot change anything."
+        ],
+        deepLink:"https://www.behance.net/priyankaart" }
+    ];
+
+    const reel = document.getElementById('reel');
+    const contentInner = document.getElementById('content-inner');
+    const leftCluster = document.getElementById('left-cluster');
+    const leftCounter = document.getElementById('left-counter');
+    const tabs = document.querySelectorAll('.tab');
+
+    // INITIAL RENDER
+    function renderReel() {
+      reel.innerHTML = PROJECTS.map((p, i) => `
+        <div class="project-frame ${p.image ? '' : 'bg-' + p.cluster}" data-id="${p.id}" data-slug="${p.slug}" data-cluster="${p.cluster}">
+          ${p.image ? `<img src="${p.image}" class="frame-bg" referrerPolicy="no-referrer">` : ''}
+          <div class="frame-overlay"></div>
+          <div class="frame-info">${String(i + 1).padStart(2, '0')} · ${p.year}</div>
+        </div>
+      `).join('');
+    }
+
+    function updateRightColumn(project) {
+      contentInner.classList.remove('visible');
+      
+      setTimeout(() => {
+        const paragraphs = project.paragraphs.map(p => `<p>${p}</p>`).join('');
+        
+        contentInner.innerHTML = `
+          <span class="label-tag">${project.type}</span>
+          <h1>${project.name}</h1>
+          <div class="gold-rule"></div>
+          <div class="hook">${project.hook}</div>
+          <div class="divider"></div>
+          <div class="body-text">
+            ${paragraphs}
+          </div>
+          <div class="cta-area">
+            <a href="${project.deepLink}" class="primary-cta" target="_blank" rel="noopener noreferrer">View Full Case Study &rarr;</a>
+            <a href="work.html" class="secondary-cta">&larr; All Projects</a>
+          </div>
+        `;
+        
+        contentInner.classList.add('visible');
+      }, 150);
+    }
+
+    // INTERSECTION OBSERVER
+    const observerOptions = {
+      root: reel,
+      threshold: 0.6
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = parseInt(entry.target.getAttribute('data-id'));
+          const project = PROJECTS.find(p => p.id === id);
+          
+          // 1. Active class
+          document.querySelectorAll('.project-frame').forEach(f => f.classList.remove('active'));
+          entry.target.classList.add('active');
+          
+          // 2. Left Column
+          leftCluster.textContent = project.cluster === 'experience' ? 'Experience Design' : 
+                                    project.cluster === 'research' ? 'Research & Foresight' : 
+                                    'Brand & Visual Culture';
+          leftCounter.textContent = `${String(id).padStart(2, '0')} / ${String(PROJECTS.length).padStart(2, '0')}`;
+          
+          // 3. Right Column
+          updateRightColumn(project);
+          
+          // 4. Silent Hash
+          history.replaceState(null, '', '#' + project.slug);
+
+          // 5. Update Tab Active State
+          tabs.forEach(t => {
+            t.classList.toggle('active', t.getAttribute('data-filter') === project.cluster);
+          });
+        }
+      });
+    }, observerOptions);
+
+    // TABS LOGIC
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter');
+        
+        if (filter === 'all') {
+          reel.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const firstInCluster = PROJECTS.find(p => p.cluster === filter);
+          if (firstInCluster) {
+            const frame = document.querySelector(`[data-id="${firstInCluster.id}"]`);
+            frame.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // INIT
+    renderReel();
+    document.querySelectorAll('.project-frame').forEach(f => observer.observe(f));
+
+    // HASH LOAD
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        // Check if it's a slug
+        const project = PROJECTS.find(p => p.slug === hash);
+        if (project) {
+          const frame = document.querySelector(`[data-id="${project.id}"]`);
+          frame.scrollIntoView({ behavior: 'instant' });
+        } else {
+          // Check if it's a cluster
+          const clusterMap = {
+            'experience': 'experience',
+            'research': 'research',
+            'brand': 'brand'
+          };
+          if (clusterMap[hash]) {
+            const firstInCluster = PROJECTS.find(p => p.cluster === clusterMap[hash]);
+            const frame = document.querySelector(`[data-id="${firstInCluster.id}"]`);
+            frame.scrollIntoView({ behavior: 'instant' });
+          }
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>
